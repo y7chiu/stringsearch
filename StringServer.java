@@ -16,7 +16,7 @@ class StringHandler implements URLHandler {
     if(url.getPath().equals("/add")) {
       if(query.startsWith("s=")) {
         String toAdd = query.split("=")[1];
-        this.lines.add(toAdd);
+        this.lines.add(toAdd+"\n");
         return String.format("%s added, there are now %s lines", toAdd, this.lines.size());
       }
       else {
