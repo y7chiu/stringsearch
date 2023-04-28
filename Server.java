@@ -5,6 +5,7 @@
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.InetAddress;
 import java.net.URI;
 
 import com.sun.net.httpserver.HttpExchange;
@@ -48,6 +49,7 @@ public class Server {
 
         //start the server
         server.start();
-        System.out.println("Server Started! Visit http://localhost:" + port + " to visit.");
+        System.out.println("Server started at http://" + InetAddress.getLocalHost().getHostName() + ":" + port);
+        System.out.println("(Or, if it's running locally on this computer, use http://localhost:" + port + " )");
     }
 }
