@@ -16,17 +16,17 @@ class StringHandler implements URLHandler {
     if(url.getPath().equals("/add")) {
       if(query.startsWith("s=")) {
         String toAdd = query.split("=")[1];
-        this.lines.add(toAdd+"\n");
-        return String.format("%s added, there are now %s lines", toAdd, this.lines.size());
+        this.lines.add(toAdd);
+        return String.format("%s added, there are now %s lines\n", toAdd, this.lines.size());
       }
       else {
-        return "/add requires a query parameter s";
+        return "/add requires a query parameter s\n";
       }
     }
     else if(url.getPath().equals("/save")) {
-      String toSave = String.join("\n", lines);
+      String toSave = String.join("\n", lines) + "\n";
       Files.write(Paths.get(this.path), toSave.getBytes());
-      return "Saved!";
+      return "Saved!\n";
     }
     else if(url.getPath().equals("/search")) {
       if(query.startsWith("q=")) {
@@ -40,11 +40,11 @@ class StringHandler implements URLHandler {
         return result;
       }
       else {
-        return "/search requires a query parameter q";
+        return "/search requires a query parameter q\n";
       }
     }
     else {
-      return String.join("\n", lines);
+      return String.join("\n", lines) + "\n";
     }
   }
 }
